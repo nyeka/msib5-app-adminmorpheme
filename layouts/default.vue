@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { breakpointsTailwind } from "@vueuse/core";
-
 const breakpoints = useBreakpoints(breakpointsTailwind);
 const isMobile = breakpoints.smaller("sm"); // only smaller than lg
 const isAsideOpen = ref(true);
@@ -16,7 +15,13 @@ const isMini = ref(false);
     <!-- header -->
 
     <template v-if="isMobile" #header>
-      <VBtn @click="isAsideOpen = !isAsideOpen"> Click here </VBtn>
+      <VBtn
+        color="primary"
+        prefix-icon="ic:round-menu"
+        @click="isAsideOpen = !isAsideOpen"
+        class="flex"
+        size="sm"
+      />
     </template>
 
     <template #navigation>
