@@ -23,17 +23,29 @@
     <VCard class="!flex !gap-2 !flex-col !w-fit">
       <VFileUpload label="file" theme="image" />
       <div class="flex gap-2 my-2">
-        <VInput v-model="nameInput" shadow placeholder="name" />
-        <VInput v-model="priceInput" type="number" shadow placeholder="price" />
+        <VInput v-model="nameInput" shadow placeholder="name" label="Name" />
+        <VInput
+          v-model="priceInput"
+          type="number"
+          shadow
+          placeholder="price"
+          label="Price"
+        />
       </div>
 
-      <VInput v-model="categoryInput" shadow placeholder="category" />
+      <VInput
+        v-model="categoryInput"
+        shadow
+        placeholder="category"
+        label="Price"
+      />
     </VCard>
   </VModal>
 </template>
 
 <script setup lang="ts">
 import { useProductStore } from "~/stores/counter";
+
 const state = useProductStore();
 interface IProps {
   isOpen: boolean;

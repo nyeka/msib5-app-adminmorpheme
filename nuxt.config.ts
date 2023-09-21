@@ -1,31 +1,31 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/google-fonts',
-    '@nuxtjs/tailwindcss',
-    ['@pinia/nuxt', { disableVuex: true }],
-    '@vueuse/nuxt',
-    '@nuxtjs/fontaine',
-    '@morpheme/nuxt',
-    '@nuxtjs/i18n',
-    '@nuxt/image-edge',
-    '@nuxtjs/color-mode',
-    'nuxt-vitest',
-    '@vueuse/nuxt',
+    "@nuxtjs/google-fonts",
+    "@nuxtjs/tailwindcss",
+    ["@pinia/nuxt", { disableVuex: true }],
+    "@vueuse/nuxt",
+    "@nuxtjs/fontaine",
+    "@morpheme/nuxt",
+    "@nuxtjs/i18n",
+    "@nuxt/image-edge",
+    "@nuxtjs/color-mode",
+    "nuxt-vitest",
+    "@vueuse/nuxt",
   ],
 
   runtimeConfig: {
     public: {
-      gaId: '',
-      apiUrl: '',
-      appUrl: '',
+      gaId: "",
+      apiUrl: "",
+      appUrl: "",
     },
   },
 
-  css: ['~/assets/css/global.scss'],
+  css: ["~/assets/css/global.scss"],
 
   imports: {
-    dirs: ['./api', './stores'],
+    dirs: ["./api", "./stores"],
   },
 
   googleFonts: {
@@ -41,56 +41,56 @@ export default defineNuxtConfig({
     darkMode: true,
     css: false,
     sass: true,
-    theme: 'morpheme',
+    theme: "morpheme",
   },
 
   // https://v8.i18n.nuxtjs.org
   i18n: {
     locales: [
       {
-        code: 'en',
-        file: 'en-US.json',
-        name: 'English',
+        code: "en",
+        file: "en-US.json",
+        name: "English",
       },
       {
-        code: 'id',
-        file: 'id-ID.json',
-        name: 'Indonesia',
+        code: "id",
+        file: "id-ID.json",
+        name: "Indonesia",
       },
       {
-        code: 'fr',
-        file: 'fr-FR.json',
-        name: 'Français',
+        code: "fr",
+        file: "fr-FR.json",
+        name: "Français",
       },
     ],
     lazy: true,
-    langDir: 'locales',
-    defaultLocale: 'en',
+    langDir: "locales",
+    defaultLocale: "en",
     detectBrowserLanguage: {
       useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root', // recommended
+      cookieKey: "i18n_redirected",
+      redirectOn: "root", // recommended
     },
   },
 
   // https://color-mode.nuxtjs.org
   colorMode: {
-    classSuffix: '',
+    classSuffix: "",
   },
 
   vite: {
     optimizeDeps: {
-      include: ['yup'],
+      include: ["yup"],
     },
   },
 
   // nuxt layer
   extends: [
     // comment this line to disable the default nuxt layer
-    './_landing',
+    "./_landing",
   ],
 
   devtools: {
     enabled: true,
   },
-})
+});
