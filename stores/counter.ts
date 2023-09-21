@@ -51,7 +51,15 @@ export const useProductStore = defineStore("Product", {
 
   actions: {
     addProducts(product: ICounter) {
-      this.Products.push(product);
+      const existProduct = this.Products.find(
+        (item) => item.id === product.id
+      ) as any;
+
+      if (existProduct) {
+        Object.assign(existProduct, product);
+      } else {
+        this.Products.push(product);
+      }
     },
     removeProduct(id: number) {
       this.Products = this.Products.filter((item) => item.id !== id);

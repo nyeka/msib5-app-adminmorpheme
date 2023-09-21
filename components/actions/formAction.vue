@@ -13,7 +13,7 @@
         name: nameInput,
         price: Number(priceInput),
         category: categoryInput,
-        id: state.Products.length + 1,
+        id: props.id ?? state.Products.length + 1,
         images: 'https://picsum.photos/300/300?random=7',
       })
     }
@@ -26,6 +26,7 @@
         <VInput v-model="nameInput" shadow placeholder="name" />
         <VInput v-model="priceInput" type="number" shadow placeholder="price" />
       </div>
+
       <VInput v-model="categoryInput" shadow placeholder="category" />
     </VCard>
   </VModal>
@@ -36,6 +37,7 @@ import { useProductStore } from "~/stores/counter";
 const state = useProductStore();
 interface IProps {
   isOpen: boolean;
+  id: number;
 }
 const props = defineProps<IProps>();
 const nameInput = ref("");

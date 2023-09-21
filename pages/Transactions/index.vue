@@ -26,6 +26,7 @@
 
 <script setup lang="ts">
 import type { VDataTableHeader } from "@morpheme/table";
+import type { VBreadcrumbItemProps } from "@morpheme/breadcrumbs";
 
 const items = ref([
   {
@@ -41,6 +42,19 @@ const items = ref([
 ]);
 
 const selectedTab = ref(0);
+
+definePageMeta({
+  breadcrumbs: [
+    {
+      title: "Home",
+      to: "/",
+    },
+    {
+      title: "transactions",
+      to: "/transactions",
+    },
+  ] as VBreadcrumbItemProps[],
+});
 
 const headers = ref<VDataTableHeader[]>([
   {

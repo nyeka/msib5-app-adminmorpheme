@@ -19,6 +19,10 @@ const isMini = ref(false);
       <VBtn @click="isAsideOpen = !isAsideOpen"> Click here </VBtn>
     </template>
 
+    <template #navigation>
+      <HeaderCrumbs />
+    </template>
+
     <!-- aside -->
     <template #aside>
       <VNavDrawer

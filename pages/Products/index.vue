@@ -2,6 +2,7 @@
 import type { VDataTableHeader } from "@morpheme/table";
 import { useProductStore } from "~/stores/counter";
 const state = useProductStore();
+import type { VBreadcrumbItemProps } from "@morpheme/breadcrumbs";
 
 const headers = ref<VDataTableHeader[]>([
   {
@@ -30,14 +31,25 @@ const headers = ref<VDataTableHeader[]>([
   },
 ]);
 
+definePageMeta({
+  breadcrumbs: [
+    {
+      title: "Home",
+      to: "/",
+    },
+    {
+      title: "Products",
+      to: "/products",
+    },
+  ] as VBreadcrumbItemProps[],
+});
+
+const route = useRouter();
+
 const isOpen = ref(false);
 const openEditor = ref(false);
 const search = ref("");
 const id = ref(0);
-
-const handleDeleteId = (id: number) => {
-  console.log(id);
-};
 </script>
 
 <template>
@@ -65,8 +77,14 @@ const handleDeleteId = (id: number) => {
           </div>
         </template>
         <template #item.action="{ item }">
-          <VBtn prefix-icon="untitled:eye" />
-          <VBtn prefix-icon="untitled:edit-01" />
+          <VBtn
+            prefix-icon="untitled:eye"
+            @click="route.push(`/products/${item.id}`)"
+          />
+          <VBtn
+            prefix-icon="untitled:edit-01"
+            @click="(openEditor = !openEditor), (id = item.id)"
+          />
           <VBtn
             prefix-icon="untitled:trash-01"
             @click="(isOpen = !isOpen), (id = item.id)"
@@ -75,6 +93,6 @@ const handleDeleteId = (id: number) => {
       </VDataTable>
     </VCard>
     <ModalDeleteModal :id="id" :isOpen="isOpen" />
-    <ActionsFormAction :isOpen="openEditor" />
+    <ActionsFormAction :isOpen="openEditor" :id="id" />
   </VContainer>
 </template>

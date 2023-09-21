@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import type { VBreadcrumbItemProps } from "@morpheme/breadcrumbs";
-
 definePageMeta({
   breadcrumbs: [
     {
-      title: "Products",
-      to: "/Products",
+      title: "Home",
+      to: "/",
     },
   ] as VBreadcrumbItemProps[],
 });
