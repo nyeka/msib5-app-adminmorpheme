@@ -9,7 +9,7 @@ const props = defineProps<IProps>();
 
 <template>
   <div>
-    <h1 class="font-semibold text-2xl">{{ props.title }}</h1>
-    <p>{{ props.subs }}</p>
+    <h1 class="font-semibold text-lg">{{ props.title }}</h1>
+    <p class="text-[#737373]">{{ props.subs }}</p>
   </div>
 </template>

@@ -36,7 +36,6 @@
           label="Description"
           toolbar="full"
           :value="desc"
-          @change="(e) => console.log(e)"
         />
         <VBtn class="!mt-[24px] !bg-[#6172f3] !text-white" type="submit"
           >Submit</VBtn

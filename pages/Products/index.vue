@@ -24,7 +24,6 @@ const headers = ref<VDataTableHeader[]>([
   {
     value: "action",
     text: "Action",
-    freeze: true,
     positionFreeze: "right",
     sortable: false,
     align: "center",
@@ -74,8 +73,6 @@ const id = ref(0);
         v-model:search="search"
         :items="state.Products"
         :headers="headers"
-        tdClass="!transparent"
-        class="!bg-white"
       >
         <template #item.images="{ item }">
           <div class="overflow-hidden rounded-md w-12 h-12 object-cover">

@@ -13,7 +13,7 @@ definePageMeta({
 <template>
   <VContainer class="bg-dark-500 flex flex-col gap-4 container mx-auto p-4">
     <HeaderPageHeader
-      title="dashboard"
+      title="Dashboard"
       subs="Monitor your metrics for shipping, transactions, product and many more in here"
     />
 
