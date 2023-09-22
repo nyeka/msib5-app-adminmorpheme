@@ -3,14 +3,15 @@
     <VCard
       class="!flex !h-full !bg-[white] !gap-4 !flex-col !w-full !text-[black]"
     >
-      <form :onSubmit="(e) => onSubmit(e)">
-        <VFileUpload label="Image" theme="image" />
+      <form @submit.prevent="onSubmit">
+        <VFileUpload label="Image" theme="image" name="image" />
         <div class="flex gap-2 my-2 !text-[black] !w-full">
           <VInput
             v-model="nameInput"
             class="!bg-[white] !text-[black] !w-full"
             shadow
             placeholder="name"
+            name="name"
             label="Name"
           />
           <VInput
@@ -18,6 +19,7 @@
             type="number"
             class="!bg-[white] !text-[black] !w-full"
             shadow
+            name="price"
             placeholder="price"
             label="Price"
           />
@@ -28,10 +30,12 @@
           class="!bg-[white] !text-[black]"
           shadow
           placeholder="category"
+          name="category"
           label="category"
         />
         <VEditor
           class="!mt-[15px]"
+          name="description"
           v-model="desc"
           label="Description"
           toolbar="full"
@@ -49,41 +53,83 @@
 import VEditor from "@morpheme/editor";
 import { useProductStore } from "~/stores/counter";
 const state = useProductStore();
-const nameInput = ref("");
-const priceInput = ref("");
-const category = ref("");
-const desc = ref("");
+const nameInput = ref<string>("");
+const priceInput = ref<string>("");
+const category = ref<string>("");
+const desc = ref<string>("");
 const route = useRouter();
-import * as yup from "yup";
-import { useField, useForm } from "vee-validate";
+// import * as yup from "yup";
+// import { useField, useForm } from "vee-validate";
 
-const schema = yup.object({
-  nameInput: yup.string().required("Name is required"),
-  priceInput: yup
-    .number()
-    .required("Price is required")
-    .min(0, "Price must be greater than or equal to 0"),
-  category: yup.string().required("Category is required"),
-  desc: yup.string().required("Description is required"),
+// const schema = yup.object({
+//   nameInput: yup.string().required("Name is required"),
+//   priceInput: yup
+//     .number()
+//     .required("Price is required")
+//     .min(0, "Price must be greater than or equal to 0"),
+//   category: yup.string().required("Category is required"),
+//   desc: yup.string().required("Description is required"),
+// });
+
+import { number, object, string } from "yup";
+import { useForm } from "vee-validate";
+
+const schema = object({
+  price: number().required().label("price"),
+  category: string().required().label("category"),
+  name: string().required().label("name"),
+  description: string().label("description"),
 });
 
-// Create vee-validate form and fields
+const { handleSubmit } = useForm({
+  validationSchema: schema,
+});
 
-const onSubmit = async (e: any) => {
-  try {
-    e.preventDefault();
-    state.addProducts({
-      id: state.Products.length + 1,
-      name: nameInput as any,
-      price: priceInput as any,
-      images: "https://picsum.photos/300/300?random=9",
-      category: category as any,
-    });
-    route.push("/products");
-  } catch (error) {
-    console.log(error);
-  }
-};
+const onSubmit = handleSubmit((values) => {
+  state.addProducts({
+    id: state.Products.length + 1,
+    name: values.name as any,
+    price: values.price as any,
+    images: "https://picsum.photos/300/300?random=9",
+    category: values.category as any,
+  });
+  route.push("/products");
+});
+
+// const name = useField("nameInput", yup.string().required("Name is required"));
+// const price = useField(
+//   "priceInput",
+//   yup
+//     .number()
+//     .required("Price is required")
+//     .min(0, "Price must be greater than or equal to 0")
+// );
+// const Category = useField(
+//   "category",
+//   yup.string().required("Category is required")
+// );
+
+// const onSubmit = async () => {
+//   try {
+//     const valid = await Promise.all([
+//       name.validate(),
+//       price.validate(),
+//       Category.validate(),
+//     ]);
+
+//     console.log(valid);
+//     state.addProducts({
+//       id: state.Products.length + 1,
+//       name: nameInput as any,
+//       price: priceInput as any,
+//       images: "https://picsum.photos/300/300?random=9",
+//       category: category as any,
+//     });
+//     // route.push("/products");
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 </script>
 
 <style scoped lang="scss">
