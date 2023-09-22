@@ -4,7 +4,7 @@
       title="Transactions"
       subs="Monitor your transaction here"
     />
-    <VCard class="!bg-[#fff] mt-4">
+    <VCard class="!bg-[#fff] !mt-4">
       <VTabs :items="items" v-model="selectedTab" />
       <div class="mt-4">
         <div v-if="selectedTab === 0">

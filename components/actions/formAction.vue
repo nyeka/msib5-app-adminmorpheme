@@ -23,10 +23,17 @@
     <VCard class="!flex !gap-2 !flex-col !w-fit">
       <VFileUpload label="file" theme="image" />
       <div class="flex gap-2 my-2">
-        <VInput v-model="nameInput" shadow placeholder="name" label="Name" />
+        <VInput
+          v-model="nameInput"
+          :value="findItem?.name"
+          shadow
+          placeholder="name"
+          label="Name"
+        />
         <VInput
           v-model="priceInput"
           type="number"
+          :value="findItem?.price"
           shadow
           placeholder="price"
           label="Price"
@@ -35,6 +42,7 @@
 
       <VInput
         v-model="categoryInput"
+        :value="findItem?.category"
         shadow
         placeholder="category"
         label="Price"
@@ -47,11 +55,17 @@
 import { useProductStore } from "~/stores/counter";
 
 const state = useProductStore();
+
 interface IProps {
   isOpen: boolean;
   id: number;
 }
 const props = defineProps<IProps>();
+
+const findItem = computed(() => {
+  return state.Products.find((item) => item.id === props.id);
+});
+
 const nameInput = ref("");
 const priceInput = ref("");
 const categoryInput = ref("");

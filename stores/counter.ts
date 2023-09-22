@@ -33,14 +33,14 @@ export const useProductStore = defineStore("Product", {
         images: "https://picsum.photos/300/300?random=7",
       },
       {
-        id: 6,
+        id: 4,
         name: "Desk Chair",
         price: 149.99,
         category: "Furniture",
         images: "https://picsum.photos/300/300?random=9",
       },
       {
-        id: 7,
+        id: 5,
         name: "Bluetooth Speaker",
         price: 69.99,
         category: "Electronics",

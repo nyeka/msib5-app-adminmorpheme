@@ -14,6 +14,7 @@
 
 <script setup lang="ts">
 import { useProductStore } from "~/stores/counter";
+
 const state = useProductStore();
 const route = useRoute();
 const id = route.params.id;

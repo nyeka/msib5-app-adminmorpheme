@@ -55,7 +55,7 @@ const id = ref(0);
 <template>
   <VContainer class="container mx-auto p-4 flex flex-col gap-4">
     <HeaderPageHeader title="Products" subs="Manage your products here" />
-    <VCard class="!bg-white">
+    <VCard class="!bg-white !mt-4">
       <div class="flex justify-between">
         <VInput
           v-model="search"
@@ -63,12 +63,18 @@ const id = ref(0);
           wrapper-class="mb-4"
           prepend-icon="ri:search-line"
         />
-        <VBtn @click="openEditor = !openEditor"> Tambah </VBtn>
+        <VBtn
+          @click="route.push('/products/create')"
+          class="!bg-[#6172f3] !text-[white]"
+        >
+          Tambah
+        </VBtn>
       </div>
       <VDataTable
         v-model:search="search"
         :items="state.Products"
         :headers="headers"
+        tdClass="!transparent"
         class="!bg-white"
       >
         <template #item.images="{ item }">
