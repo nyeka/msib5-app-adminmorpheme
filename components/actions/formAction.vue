@@ -28,14 +28,16 @@
           :value="findItem?.name"
           shadow
           placeholder="name"
+          name="name"
           label="Name"
         />
         <VInput
           v-model="priceInput"
-          type="number"
           :value="findItem?.price"
+          type="number"
           shadow
           placeholder="price"
+          name="price"
           label="Price"
         />
       </div>
@@ -45,7 +47,8 @@
         :value="findItem?.category"
         shadow
         placeholder="category"
-        label="Price"
+        name="category"
+        label="category"
       />
     </VCard>
   </VModal>
@@ -61,12 +64,11 @@ interface IProps {
   id: number;
 }
 const props = defineProps<IProps>();
+const nameInput = ref<string>("");
+const priceInput = ref<string>("");
+const categoryInput = ref<string>("");
 
 const findItem = computed(() => {
   return state.Products.find((item) => item.id === props.id);
 });
-
-const nameInput = ref("");
-const priceInput = ref("");
-const categoryInput = ref("");
 </script>

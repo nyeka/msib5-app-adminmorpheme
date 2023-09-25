@@ -8,6 +8,7 @@
         <p>{{ findItem?.price }}</p>
       </div>
       <p class="mt-2">{{ findItem?.category }}</p>
+      <div v-html="findItem?.description"></div>
     </VCard>
   </VContainer>
 </template>

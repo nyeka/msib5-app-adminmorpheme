@@ -92,6 +92,7 @@ const onSubmit = handleSubmit((values) => {
     price: values.price as any,
     images: "https://picsum.photos/300/300?random=9",
     category: values.category as any,
+    description: values.description as any,
   });
   route.push("/products");
 });
